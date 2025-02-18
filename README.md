@@ -11,6 +11,7 @@ Select product variants (e.g., size, color) before adding them to the cart.
 Add products to the shopping cart and update quantities.
 
 Admin Dashboard:
+
 Add, update, and delete products.
 View all products available in the store.
 Manage product variants (sizes, colors, etc.).
