@@ -18,6 +18,9 @@ Manage product variants (sizes, colors, etc.).
 Check all user orders and their status.
 
 Tech Stack
+
 Frontend: React.js, React Router, Axios
+
 Backend: Node.js, Express.js
+
 Database: MongoDB (NoSQL)
