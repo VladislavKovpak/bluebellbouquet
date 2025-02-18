@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family:Outfit;
+}
+
+select,input,textarea{
+    border: 1px solid #c2c2c2;
+    outline-color: #C586A5;
+    border-radius: 4px;
+}
+
+.active{
+    background-color: #ffebf5;
+    border-color: #C586A5;
+}
+
+.product-list .flex {
+    justify-content: flex-start; /* Вирівнює кнопки по лівому краю */
+    gap: 10px; /* Відступ між кнопками */
+  }
+  
+  .product-list .flex button,
+  .product-list .flex p {
+    margin-left: 10px; /* Зсуває кнопки лівіше */
+  }
+  
+  
