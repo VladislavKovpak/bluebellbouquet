@@ -5,10 +5,10 @@
 @tailwind utilities;
 
 .product-image {
-  width: 100%; /* Адаптивна ширина */
-  max-width: 250px; /* Максимальна ширина */
-  height: 250px; /* Фіксована висота */
-  object-fit: cover; /* Обрізати зображення, щоб воно відповідало контейнеру */
+  width: 100%; 
+  max-width: 250px;
+  height: 250px; 
+  object-fit: cover; 
   display: block;
   margin: 0 auto;
 }

@@ -28,7 +28,7 @@ const PlaceOrder = () => {
 
   const [useSameInfo, setUseSameInfo] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-  const [bouquetSignature, setBouquetSignature] = useState(''); // Новий стан для підпису
+  const [bouquetSignature, setBouquetSignature] = useState('');
 
   const handleCheckboxChange = () => {
     setUseSameInfo(!useSameInfo);
@@ -82,19 +82,19 @@ const PlaceOrder = () => {
 
       ORDER ITEMS:
       ${cartItems &&
-        Object.keys(cartItems).map((itemId) => {
-          const productData = products.find((product) => product._id === itemId);
-          if (productData && cartItems[itemId] > 0) {
-            return `${productData.name} x${cartItems[itemId]}`;
-          }
-          return '';
-        }).join('\n')}
+      Object.keys(cartItems).map((itemId) => {
+        const productData = products.find((product) => product._id === itemId);
+        if (productData && cartItems[itemId] > 0) {
+          return `${productData.name} x${cartItems[itemId]}`;
+        }
+        return '';
+      }).join('\n')}
 
       TOTAL: ${currency} ${getCartAmount() + delivery_fee}.00`;
 
     const whatsappUrl = `https://wa.me/33773592133?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, '_blank'); // Відкриває WhatsApp у новій вкладці
-    
+    window.open(whatsappUrl, '_blank');
+
     navigate('/order-complete');
   };
 
@@ -108,7 +108,6 @@ const PlaceOrder = () => {
 
   return (
     <form className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t">
-      {/*---Left side----- */}
       <div className="flex flex-col gap-4 w-full sm:max-w-[480px]">
         <div className="text-xl sm:text-2xl my-3">
           <Title text1={'CONTACT'} text2={'INFORMATION'} />
@@ -238,7 +237,6 @@ const PlaceOrder = () => {
         />
       </div>
 
-      {/*-------Right side----- */}
       <div className="flex flex-col w-full sm:max-w-[480px]">
         <div className="mt-8 min-w-80">
           <CartTotal />

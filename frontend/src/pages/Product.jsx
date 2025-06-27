@@ -37,7 +37,6 @@ const Product = () => {
 
   return productData ? (
     <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100">
-      {/*------------- Back Button -------------*/}
       <div className="flex justify-end mb-5">
         <button
           onClick={handleBack}
@@ -46,9 +45,7 @@ const Product = () => {
           ← Back
         </button>
       </div>
-      {/*----------------Product data----------------*/}
       <div className="flex gap-12 sm:gap-12 flex-col sm:flex-row">
-        {/*--------------Product images---------------*/}
         <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
           <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
             {productData.image.map((item, index) => (
@@ -64,7 +61,6 @@ const Product = () => {
             <img className="w-full h-auto" src={image} alt="" />
           </div>
         </div>
-        {/* ----------------Product info----------------- */}
         <div className="flex-1">
           <h1 className="font-medium text-2xl mt-2">{productData.name}</h1>
           <div className="flex items-center gap-1 mt-2">
@@ -95,16 +91,7 @@ const Product = () => {
           </div>
         </div>
       </div>
-      {/*------------Description------------- */}
-      <div className="mt-20">
-        <div className="flex">
-          <b className="border px-5 py-3 text-sm">Description</b>
-        </div>
-        <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
-          <p>Product details...</p>
-        </div>
-      </div>
-      {/**-------Related products */}
+      
       <RelatedProducts category={productData.category} />
     </div>
   ) : (

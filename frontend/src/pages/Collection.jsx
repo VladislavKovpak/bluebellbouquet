@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';  // Use useNavigate instead of useHistory
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets';
 import Title from '../components/Title';
@@ -9,21 +9,20 @@ const Collection = () => {
   const { products, search, showSearch } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
-  const [category, setCategory] = useState([]);  // Zберігає вибрані категорії
+  const [category, setCategory] = useState([]);
   const [sortType, setSortType] = useState('relevant');
 
   const location = useLocation();
-  const navigate = useNavigate();  // Use useNavigate instead of useHistory
+  const navigate = useNavigate();
 
   const toggleCategory = (e) => {
     const value = e.target.value;
     const newCategory = category.includes(value) ? category.filter(item => item !== value) : [...category, value];
     setCategory(newCategory);
 
-    // Update URL with selected categories
     navigate({
       pathname: '/collection',
-      search: `?category=${newCategory.join(',')}`,  // Append categories to the URL
+      search: `?category=${newCategory.join(',')}`,
     });
   }
 
@@ -57,7 +56,6 @@ const Collection = () => {
     }
   }
 
-  // Get categories from URL parameters on page load
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const categoryFromUrl = queryParams.get('category');
@@ -81,14 +79,12 @@ const Collection = () => {
   return (
     <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
 
-      {/* Filter options */}
       <div className='min-w-60'>
         <p onClick={() => setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2'>
           CATEGORIES
           <img className={`h-3 sm:hidden ${showFilter ? 'rotate-90' : ''}`} src={assets.dropdown_icon} alt="" />
         </p>
 
-        {/* Category options */}
         <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? '' : 'hidden'} sm:block`}>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
             <p className='flex gap-2'>
@@ -113,12 +109,10 @@ const Collection = () => {
         </div>
       </div>
 
-      {/* Right side */}
       <div className='flex-1'>
 
         <div className='flex justify-between text-base sm:text-2xl mb-4'>
           <Title text1={'ALL'} text2={'COLLECTIONS'} />
-          {/* Product Sort */}
           <select onChange={(e) => setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2'>
             <option value="relevant">Sort by: Relevant</option>
             <option value="low-high">Sort by: Low to High</option>
@@ -126,7 +120,6 @@ const Collection = () => {
           </select>
         </div>
 
-        {/* Map Products */}
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
           {
             filterProducts.map((item, index) => (

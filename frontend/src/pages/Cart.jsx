@@ -25,7 +25,6 @@ const Cart = () => {
     setCartData(tempData);
   }, [cartItems, products]);
 
-  // Update button state based on cart and total value
   useEffect(() => {
     const total = getCartAmount() + delivery_fee;
     setIsButtonDisabled(cartData.length === 0 || total === 0);
