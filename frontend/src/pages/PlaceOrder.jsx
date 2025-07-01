@@ -92,7 +92,7 @@ const PlaceOrder = () => {
 
       TOTAL: ${currency} ${getCartAmount() + delivery_fee}.00`;
 
-    const whatsappUrl = `https://wa.me/33773592133?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/33676453191?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
 
     navigate('/order-complete');

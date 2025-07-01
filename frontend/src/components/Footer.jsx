@@ -19,7 +19,7 @@ const Footer = () => {
                 <a href="https://www.instagram.com/bluebell.bouquet" target="_blank" rel="noopener noreferrer">
                 <li>Instagram</li>
                 </a>
-                <a href="https://wa.me/+33773592133" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/+33676453191" target="_blank" rel="noopener noreferrer">
                 <li>WhatsApp</li>
                 </a>
                 <li>bluebellbouquett@gmail.com</li>
