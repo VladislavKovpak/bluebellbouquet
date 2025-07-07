@@ -6,9 +6,8 @@ import { toast } from 'react-toastify';
 const List = ({ token }) => {
   const [list, setList] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
-  const [originalProduct, setOriginalProduct] = useState(null); // Зберігаємо оригінальні значення продукту
+  const [originalProduct, setOriginalProduct] = useState(null); 
 
-  // Fetch list of products
   const fetchList = async () => {
     try {
       const response = await axios.get(`${backendUrl}/api/product/list`, {
@@ -25,7 +24,6 @@ const List = ({ token }) => {
     }
   };
 
-  // Remove product
   const removeProduct = async (id) => {
     try {
       const response = await axios.post(
@@ -45,10 +43,9 @@ const List = ({ token }) => {
     }
   };
 
-  // Update product logic
   const handleEdit = (product) => {
-    setEditingProduct({ ...product }); // Створюємо копію продукту для редагування
-    setOriginalProduct({ ...product }); // Зберігаємо оригінальний продукт
+    setEditingProduct({ ...product });
+    setOriginalProduct({ ...product });
   };
 
   const handleUpdate = async (e) => {
@@ -72,7 +69,7 @@ const List = ({ token }) => {
       if (response.data.success) {
         toast.success(response.data.message);
         setEditingProduct(null);
-        fetchList(); // Refresh the list after update
+        fetchList(); 
       } else {
         toast.error(response.data.message);
       }
@@ -90,18 +87,15 @@ const List = ({ token }) => {
     }));
   };
 
-  // Cancel editing
   const handleCancel = () => {
     setEditingProduct(null);
   };
 
-  // Перевірка на зміни
   const isUpdateDisabled = () => {
     if (!editingProduct || !originalProduct) return true;
     return JSON.stringify(editingProduct) === JSON.stringify(originalProduct);
   };
 
-  // Effect hook to fetch products when the component mounts
   useEffect(() => {
     fetchList();
   }, [token]);
@@ -192,7 +186,7 @@ const List = ({ token }) => {
                 <button
                   type="submit"
                   className='w-14 py-1.5 mt-4 bg-black text-white'
-                  disabled={isUpdateDisabled()} // Відключаємо кнопку, якщо немає змін
+                  disabled={isUpdateDisabled()} 
                 >
                   Update
                 </button>

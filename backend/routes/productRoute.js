@@ -5,7 +5,6 @@ import adminAuth from '../middleware/adminAuth.js';
 
 const productRouter = express.Router();
 
-// Маршрут для додавання продукту
 productRouter.post(
     '/add', 
     adminAuth, 
@@ -18,16 +17,12 @@ productRouter.post(
     addProduct
 );
 
-// Маршрут для видалення продукту
 productRouter.post('/remove', adminAuth, removeProduct);
 
-// Маршрут для отримання даних про окремий продукт
 productRouter.post('/single', singleProduct);
 
-// Маршрут для отримання списку продуктів
 productRouter.get('/list', listProducts);
 
-// Маршрут для оновлення продукту
 productRouter.put(
     '/update/:id', 
     adminAuth, 

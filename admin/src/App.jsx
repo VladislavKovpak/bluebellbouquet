@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom'; // Винесіть Router з App
+import { Routes, Route } from 'react-router-dom'; 
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Add from './pages/Add';
@@ -32,7 +32,7 @@ const App = () => {
             <Sidebar />
             <div className='w-[70%] mx-auto ml-[max(5vw,25px)] my-8 text-gray-600 text-base'>
               <Routes>
-                <Route path='/' element={<Home />} /> {/* Додайте домашню сторінку */}
+                <Route path='/' element={<Home />} /> 
                 <Route path='/add' element={<Add token={token} />} />
                 <Route path='/list' element={<List token={token} />} />
               </Routes>

@@ -20,13 +20,13 @@ select,input,textarea{
 }
 
 .product-list .flex {
-    justify-content: flex-start; /* Вирівнює кнопки по лівому краю */
-    gap: 10px; /* Відступ між кнопками */
+    justify-content: flex-start; 
+    gap: 10px; 
   }
   
   .product-list .flex button,
   .product-list .flex p {
-    margin-left: 10px; /* Зсуває кнопки лівіше */
+    margin-left: 10px;
   }
   
   
