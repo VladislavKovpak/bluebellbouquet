@@ -11,7 +11,7 @@ const List = ({ token }) => {
   const fetchList = async () => {
     try {
       const response = await axios.get(`${backendUrl}/api/product/list`, {
-        headers: { token },
+        Authorization: { token },
       });
       if (response.data.success) {
         setList(response.data.products);
@@ -29,7 +29,7 @@ const List = ({ token }) => {
       const response = await axios.post(
         `${backendUrl}/api/product/remove`,
         { id },
-        { headers: { token } }
+        { Authorization: { token } }
       );
       if (response.data.success) {
         toast.success(response.data.message);
@@ -63,7 +63,7 @@ const List = ({ token }) => {
       const response = await axios.put(
         `${backendUrl}/api/product/update/${editingProduct._id}`,
         formData,
-        { headers: { token } }
+        { Authorization: { token } }
       );
 
       if (response.data.success) {
