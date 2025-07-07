@@ -7,17 +7,26 @@ import userRouter from './routes/userRoute.js'
 import productRouter from './routes/productRoute.js'
 import cartRouter from './routes/cartRoute.js'
 
-//App Config
 const app = express()
 const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
 
-//Middlewares
 app.use(express.json())
-app.use(cors())
 
-//api endpoints
+app.use(cors({
+  origin: [
+    'https://admin.bluebellbouquet.com',  
+    'https://bluebellbouquet.com',
+    'https://api.bluebellbouquet.com'        
+  ],
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization'],
+  credentials: true
+}))
+
+app.options('*', cors())
+
 app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
