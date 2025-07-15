@@ -18,7 +18,8 @@ app.use(cors({
   origin: [
     'https://admin.bluebellbouquet.com',  
     'https://bluebellbouquet.com',
-    'https://api.bluebellbouquet.com'        
+    'https://api.bluebellbouquet.com'   ,
+    'https://bluebellbouquet-admin.vercel.app'    
   ],
   methods: ['GET','POST','PUT','DELETE','OPTIONS'],
   allowedHeaders: ['Content-Type','Authorization'],
