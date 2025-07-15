@@ -21,7 +21,7 @@ const corsOptionsDelegate = function (req, callback) {
         credentials: true
     };
     console.log(req.header('Origin'))
-    corsOptions.origin = false;
+    corsOptions.origin = req.header('Origin');
     callback(null, corsOptions); // callback expects two parameters: error and options
 };
 
