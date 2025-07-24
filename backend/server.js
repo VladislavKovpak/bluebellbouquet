@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
+import path from 'path'
 import connectDB from './config/mongodb.js'
 import connectCloudinary from './config/cloudinary.js'
 import userRouter from './routes/userRoute.js'
@@ -22,7 +23,7 @@ const corsOptionsDelegate = function (req, callback) {
     };
     console.log(req.header('Origin'))
     corsOptions.origin = req.header('Origin');
-    callback(null, corsOptions); // callback expects two parameters: error and options
+    callback(null, corsOptions);
 };
 
 app.use(cors(corsOptionsDelegate));
@@ -31,8 +32,18 @@ app.use('/api/user', userRouter)
 app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
 
-app.get('/', (req, res)=>{
+app.get('/api', (req, res) => {
     res.send("API Working")
 })
 
-app.listen(port, ()=> console.log("server started on PORT:" + port))
+// ===== ВАЖНО: Подключение React frontend =====
+const __dirname = path.resolve(); // нужно для ES-модуля
+app.use(express.static(path.join(__dirname, 'client', 'build')))
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+})
+// =============================================
+
+app.listen(port, () => console.log("server started on PORT:" + port))
+
