@@ -10,6 +10,7 @@ const Product = () => {
   const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState('');
+  const [showMessage, setShowMessage] = useState(false); // уведомление
 
   const fetchProductData = async () => {
     const item = products.find((item) => item._id === productId);
@@ -45,6 +46,7 @@ const Product = () => {
           ← Back
         </button>
       </div>
+
       <div className="flex gap-12 sm:gap-12 flex-col sm:flex-row">
         <div className="flex-1 flex flex-col-reverse gap-3 sm:flex-row">
           <div className="flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full">
@@ -53,31 +55,41 @@ const Product = () => {
                 onClick={() => setImage(item)}
                 src={item}
                 key={index}
-                className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0"
+                className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer"
+                alt={`thumbnail-${index}`}
               />
             ))}
           </div>
           <div className="w-full sm:w-[80%]">
-            <img className="w-full h-auto" src={image} alt="" />
+            <img className="w-full h-auto" src={image} alt="Main product" />
           </div>
         </div>
+
         <div className="flex-1">
           <h1 className="font-medium text-2xl mt-2">{productData.name}</h1>
           <div className="flex items-center gap-1 mt-2">
-            <img src={assets.star_icon} className="w-3.5" />
-            <img src={assets.star_icon} className="w-3.5" />
-            <img src={assets.star_icon} className="w-3.5" />
-            <img src={assets.star_icon} className="w-3.5" />
-            <img src={assets.star_icon} className="w-3.5" />
+            {[...Array(5)].map((_, i) => (
+              <img key={i} src={assets.star_icon} className="w-3.5" alt="star" />
+            ))}
           </div>
           <p className="mt-5 text-3xl font-medium">
             {currency}
             {productData.price}
           </p>
           <p className="mt-5 text-gray-500 md:w-4/5">{productData.description}</p>
+
           <div className="mt-12">
+            {showMessage && (
+              <div className="mb-4 text-green-600 bg-green-100 border border-green-300 px-4 py-2 rounded">
+                Product added to cart!
+              </div>
+            )}
             <button
-              onClick={() => addToCart(productData._id)}
+              onClick={() => {
+                addToCart(productData._id);
+                setShowMessage(true);
+                setTimeout(() => setShowMessage(false), 2000);
+              }}
               className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
             >
               ADD TO CART
@@ -91,7 +103,7 @@ const Product = () => {
           </div>
         </div>
       </div>
-      
+
       <RelatedProducts category={productData.category} />
     </div>
   ) : (

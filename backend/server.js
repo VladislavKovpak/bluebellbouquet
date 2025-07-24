@@ -36,14 +36,12 @@ app.get('/api', (req, res) => {
     res.send("API Working")
 })
 
-// ===== ВАЖНО: Подключение React frontend =====
-const __dirname = path.resolve(); // нужно для ES-модуля
+const __dirname = path.resolve(); 
 app.use(express.static(path.join(__dirname, 'client', 'build')))
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
 })
-// =============================================
 
 app.listen(port, () => console.log("server started on PORT:" + port))
 
